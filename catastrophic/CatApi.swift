@@ -28,7 +28,7 @@ class CatApi {
         }.resume()
     }
 
-    class func getBreedImages(breedId: String, limit: Int = 0, page: Int = 0, completion: @escaping ([BreedElement], Error?) -> Void) {
+    class func getBreedImages(breedId: String = "", limit: Int = 0, page: Int = 0, completion: @escaping ([BreedElement], Error?) -> Void) {
         let url = URL(string: "\(CatApi.BASE_URL)images/search?breed_ids=\(breedId)&include_breeds=false&limit=\(limit)&page=\(page)&mime_types=png,jpg")!
 
         print(url)

@@ -46,18 +46,93 @@
         <!--Random-->
         <scene sceneID="Mt8-ki-41L">
             <objects>
-                <viewController id="Se6-s7-1NK" sceneMemberID="viewController">
+                <viewController id="Se6-s7-1NK" customClass="RandomImagesViewController" customModule="Catastrophic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="swy-Ux-CHt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TYx-CA-0vX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NMc-Lc-Z9b">
+                                    <size key="itemSize" width="200" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="kv6-Lr-Kjk" customClass="RandomImageCollectionCell" customModule="Catastrophic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="spe-wv-jdC">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kcx-no-9hz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="200" height="200"/>
+                                        <connections>
+                                            <outlet property="image" destination="kcx-no-9hz" id="2SR-eB-oFC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Frx-fD-c9s" userLabel="Errorview">
+                                <rect key="frame" x="137" y="423" width="140" height="50.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Failed to load data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaM-lx-7pF">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LW-wX-lgi">
+                                        <rect key="frame" x="51.5" y="20.5" width="37" height="30"/>
+                                        <state key="normal" title="Retry"/>
+                                        <connections>
+                                            <action selector="onRetryClick:" destination="Se6-s7-1NK" eventType="touchUpInside" id="h6K-Bz-IoC"/>
+                                            <action selector="onRetryClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aCj-3V-LfY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="qoD-d2-G2W">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TYx-CA-0vX" firstAttribute="top" secondItem="QOo-Qe-e1x" secondAttribute="top" id="D2f-3Q-AYc"/>
+                            <constraint firstItem="QOo-Qe-e1x" firstAttribute="trailing" secondItem="TYx-CA-0vX" secondAttribute="trailing" id="Dft-l6-1so"/>
+                            <constraint firstItem="Frx-fD-c9s" firstAttribute="centerY" secondItem="swy-Ux-CHt" secondAttribute="centerY" id="ROO-HN-tjV"/>
+                            <constraint firstItem="TYx-CA-0vX" firstAttribute="leading" secondItem="QOo-Qe-e1x" secondAttribute="leading" id="geH-ro-4cw"/>
+                            <constraint firstItem="qoD-d2-G2W" firstAttribute="centerX" secondItem="swy-Ux-CHt" secondAttribute="centerX" id="hhQ-6h-RLq"/>
+                            <constraint firstItem="QOo-Qe-e1x" firstAttribute="bottom" secondItem="TYx-CA-0vX" secondAttribute="bottom" id="koB-qN-s4Z"/>
+                            <constraint firstItem="qoD-d2-G2W" firstAttribute="centerY" secondItem="swy-Ux-CHt" secondAttribute="centerY" id="p3n-zF-ecO"/>
+                            <constraint firstItem="Frx-fD-c9s" firstAttribute="centerX" secondItem="swy-Ux-CHt" secondAttribute="centerX" id="rQP-KC-wJD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QOo-Qe-e1x"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Random" image="dice" selectedImage="dice_filled" id="fhp-XQ-Gd1"/>
+                    <connections>
+                        <outlet property="errorStack" destination="Frx-fD-c9s" id="CbF-MK-Pe3"/>
+                        <outlet property="progress" destination="qoD-d2-G2W" id="PEb-d0-Z2r"/>
+                        <outlet property="randomCollectionView" destination="TYx-CA-0vX" id="NOV-Az-PCJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDO-cE-rEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <collectionViewFlowLayout automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HoL-2D-2AM">
+                    <size key="itemSize" width="205" height="152"/>
+                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </collectionViewFlowLayout>
             </objects>
-            <point key="canvasLocation" x="46" y="-534"/>
+            <point key="canvasLocation" x="44.927536231884062" y="-534.375"/>
         </scene>
         <!--Breed Images View Controller-->
         <scene sceneID="sml-ZP-xOM">
